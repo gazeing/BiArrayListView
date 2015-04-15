@@ -4,73 +4,92 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/itemTitle2"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:text="some info"
-        android:textColor="#ff0000"
-        android:textSize="12sp" />
+        android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/inner_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="120sp"
-        android:orientation="horizontal" >
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_recycler_view"
+        <TextView
+            android:id="@+id/itemTitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical" />
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="some info"
+            android:textColor="#ff0000"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/inner_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="120sp"
+            android:orientation="horizontal" >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+        </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/itemTitle"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:text="some info"
-        android:textColor="#ff0000"
-        android:textSize="12sp" />
+        android:orientation="vertical"
+        android:background="@color/material_blue_grey_800" >
 
-    <LinearLayout
-        android:id="@+id/inner_layout2"
-        android:layout_width="wrap_content"
-        android:layout_height="120sp"
-        android:orientation="horizontal" >
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_recycler_view2"
+        <TextView
+            android:id="@+id/itemTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical" />
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="some info"
+            android:textColor="#ff0000"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/inner_layout2"
+            android:layout_width="wrap_content"
+            android:layout_height="120sp"
+            android:orientation="horizontal" >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_recycler_view2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+        </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/itemTitle3"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:text="some info"
-        android:textColor="#ff0000"
-        android:textSize="12sp" />
+        android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/inner_layout3"
-        android:layout_width="wrap_content"
-        android:layout_height="120sp"
-        android:orientation="horizontal" >
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_recycler_view3"
+        <TextView
+            android:id="@+id/itemTitle3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical" />
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="some info"
+            android:textColor="#ff0000"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/inner_layout3"
+            android:layout_width="wrap_content"
+            android:layout_height="120sp"
+            android:orientation="horizontal" >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_recycler_view3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -22,7 +22,7 @@ public class ArticleAdapter extends Adapter<ArticleAdapter.ArticleViewHolder> {
      */  
     public interface OnItemClickLitener  
     {  
-        void onItemClick(View view, int position);  
+        void onItemClick(View view, int position,String categoryName);  
     }  
   
     private OnItemClickLitener mOnItemClickLitener;  
@@ -34,7 +34,8 @@ public class ArticleAdapter extends Adapter<ArticleAdapter.ArticleViewHolder> {
 	
 
    List<Article> m_ArticleList;
-   private LayoutInflater mInflater;  
+   private LayoutInflater mInflater; 
+   String mcategoryName;
 	
 	public static class ArticleViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -48,10 +49,11 @@ public class ArticleAdapter extends Adapter<ArticleAdapter.ArticleViewHolder> {
 
 	
 	
-	public ArticleAdapter(List<Article> m_ArticleList,Context context) {
+	public ArticleAdapter(List<Article> m_ArticleList,Context context,String categoryName) {
 		super();
 		this.m_ArticleList = m_ArticleList;
 		mInflater = LayoutInflater.from(context);
+		this.mcategoryName = categoryName;
 	}
 
 	@Override
@@ -72,7 +74,7 @@ public class ArticleAdapter extends Adapter<ArticleAdapter.ArticleViewHolder> {
 	                @Override  
 	                public void onClick(View v)  
 	                {  
-	                    mOnItemClickLitener.onItemClick(holder.itemView, position);  
+	                    mOnItemClickLitener.onItemClick(holder.itemView, position,mcategoryName);  
 	                }  
 	            });  
 	  

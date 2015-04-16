@@ -1,6 +1,5 @@
 package com.example.biarraylistview;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleCategory {
@@ -16,7 +15,8 @@ public class ArticleCategory {
 		super();
 		this.category_id = category_id;
 		this.category_name = category_name;
-		this.article_list =new ArrayList<Article>();
+		this.article_list =article_list;
+		
 	}
 
 	

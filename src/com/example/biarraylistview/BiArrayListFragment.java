@@ -13,55 +13,71 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class BiArrayListFragment extends Fragment{
 	
-	   private RecyclerView mRecyclerView,mRecyclerView2,mRecyclerView3;
-	   private RecyclerView.Adapter mAdapter;
-	   private RecyclerView.LayoutManager mLayoutManager,mLayoutManager2,mLayoutManager3;
+
 	
 	public BiArrayListFragment(){
+		
 		
 		
 	}
 	
 	
+	@SuppressWarnings("rawtypes")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
 		View rootView = inflater.inflate(R.layout.fragment_list, container,
 				false);
+		LinearLayout rootLayout = (LinearLayout) rootView.findViewById(R.id.root_layout);
 		
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.my_recycler_view);
-        mRecyclerView2 = (RecyclerView) rootView.findViewById(R.id.my_recycler_view2);
-        mRecyclerView3 = (RecyclerView) rootView.findViewById(R.id.my_recycler_view3);
+		 List<ArticleCategory> categoryList = getData();
+		
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
-//        mRecyclerView2.setHasFixedSize(true);
-//        mRecyclerView3.setHasFixedSize(true);
+		
+		for(int i=0;i<categoryList.size();i++){
+			View layout = inflater.inflate(R.layout.item_category, container, false);
+			RecyclerView recyclerView = (RecyclerView) layout.findViewById(R.id.recycler_view);
+			recyclerView.setHasFixedSize(true);
+			LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
+			((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.HORIZONTAL);  
+		        
+			 recyclerView.setLayoutManager(layoutManager);
+			 
+			 RecyclerView.Adapter adapter = new ArticleAdapter(categoryList.get(i).getArticle_list(),getActivity(),categoryList.get(i).getCategory_name());
+		        ((ArticleAdapter) adapter).setOnItemClickLitener(new OnItemClickLitener()  
+		        {  
+		            @Override  
+		            public void onItemClick(View view, int position,String name)  
+		            {  
+		                Toast.makeText(getActivity(), name+": "+position+"", Toast.LENGTH_SHORT)  
+		                        .show();  
+		            }  
+		        }); 
+		     recyclerView.setAdapter(adapter);
+		     
+		     TextView title = (TextView) layout.findViewById(R.id.categoryTitle);
+		     title.setText(categoryList.get(i).getCategory_name());
+		     rootLayout.addView(layout);
+		}
+		
+		
+		
+		
 
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this.getActivity());
-        ((LinearLayoutManager) mLayoutManager).setOrientation(LinearLayoutManager.HORIZONTAL);  
-        
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        
-        mLayoutManager2 = new LinearLayoutManager(this.getActivity());
-        ((LinearLayoutManager) mLayoutManager2).setOrientation(LinearLayoutManager.HORIZONTAL); 
-        mRecyclerView2.setLayoutManager(mLayoutManager2);
-        
-        mLayoutManager3 = new LinearLayoutManager(this.getActivity());
-        ((LinearLayoutManager) mLayoutManager3).setOrientation(LinearLayoutManager.HORIZONTAL); 
-        mRecyclerView3.setLayoutManager(mLayoutManager3);
-        
-        // specify an adapter (see also next example)
-        
+		
+		return rootView;
+	}
 
 
+	private List<ArticleCategory> getData() {
         List<ArticleCategory> categoryList = new ArrayList<ArticleCategory>();
         List<Article> testlist = new ArrayList<Article>();
         for(int i =0;i<10;i++){
@@ -69,23 +85,14 @@ public class BiArrayListFragment extends Fragment{
         	testlist.add(a);
         }
         ArticleCategory cate = new ArticleCategory("1", "news", testlist);
-        categoryList.add(cate);
+        ArticleCategory cate2 = new ArticleCategory("2", "features", testlist);
+        ArticleCategory cate3 = new ArticleCategory("3", "video", testlist);
         
-        mAdapter = new ArticleAdapter(testlist,getActivity());
-        ((ArticleAdapter) mAdapter).setOnItemClickLitener(new OnItemClickLitener()  
-        {  
-            @Override  
-            public void onItemClick(View view, int position)  
-            {  
-                Toast.makeText(getActivity(), position+"", Toast.LENGTH_SHORT)  
-                        .show();  
-            }  
-        });  
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView2.setAdapter(mAdapter);
-        mRecyclerView3.setAdapter(mAdapter);
-		
-		return rootView;
+        categoryList.add(cate);
+        categoryList.add(cate2);
+        categoryList.add(cate3);
+        
+		return categoryList;
 	}
 
 }
